@@ -1,5 +1,8 @@
 {
 	"/": [
 		"src/routes/+page.ts"
+	],
+	"/products/[id]": [
+		"src/routes/products/[id]/+page.ts"
 	]
 }
