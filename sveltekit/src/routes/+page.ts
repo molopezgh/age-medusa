@@ -1,20 +1,22 @@
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ fetch }) => {
-  const apiKey = import.meta.env.VITE_MEDUSA_PUBLISHABLE_KEY;
-
-  // Assuming a Vite proxy is set up or you use the full URL
+  console.log('🔑 Medusa key:', import.meta.env.VITE_MEDUSA_PUBLISHABLE_KEY);
+  console.log('🔍 Fetching products…');
   const res = await fetch('/store/products', {
     headers: {
-      'x-publishable-api-key': apiKey,
+      'x-publishable-api-key': import.meta.env.VITE_MEDUSA_PUBLISHABLE_KEY,
       'Content-Type': 'application/json'
     }
   });
 
+  console.log('🔍 Response status:', res.status);
   if (!res.ok) {
+    const text = await res.text();
+    console.error('🔴 Fetch error text:', text);
     throw new Error('Failed to fetch products');
   }
-
   const data = await res.json();
+  console.log('✅ Products data:', data);
   return { products: data.products };
 };

@@ -27,6 +27,7 @@
  */
 declare module '$env/static/private' {
 	export const VITE_MEDUSA_BACKEND_URL: string;
+	export const VITE_STRIPE_PUBLISHABLE_KEY: string;
 	export const VITE_MEDUSA_PUBLISHABLE_KEY: string;
 	export const ACLOCAL_PATH: string;
 	export const ALLUSERSPROFILE: string;
@@ -175,6 +176,7 @@ declare module '$env/static/public' {
 declare module '$env/dynamic/private' {
 	export const env: {
 		VITE_MEDUSA_BACKEND_URL: string;
+		VITE_STRIPE_PUBLISHABLE_KEY: string;
 		VITE_MEDUSA_PUBLISHABLE_KEY: string;
 		ACLOCAL_PATH: string;
 		ALLUSERSPROFILE: string;
