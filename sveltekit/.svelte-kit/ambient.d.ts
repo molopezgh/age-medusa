@@ -146,7 +146,6 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const _MSYS2_BASH: string;
 	export const _MSYS2_PREFIX: string;
-	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -298,7 +297,6 @@ declare module '$env/dynamic/private' {
 		_: string;
 		_MSYS2_BASH: string;
 		_MSYS2_PREFIX: string;
-		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

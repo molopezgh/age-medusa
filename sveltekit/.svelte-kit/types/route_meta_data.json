@@ -8,6 +8,9 @@
 	"/api/create-checkout-session": [
 		"src/routes/api/create-checkout-session/+server.ts"
 	],
+	"/api/verify-session": [
+		"src/routes/api/verify-session/+server.ts"
+	],
 	"/cancel": [],
 	"/cart": [],
 	"/checkout": [
