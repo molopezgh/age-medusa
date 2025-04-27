@@ -1,36 +1,44 @@
-<!-- src/routes/checkout/+page.svelte -->
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { loadStripe } from '@stripe/stripe-js';
 
-  // Load your Stripe publishable key from environment variables
+  // 0) Verify your key is loaded
+  console.log('🔑 Stripe publishable key:', import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
   async function handleCheckout() {
-    // Call our SvelteKit API endpoint (see section 2) to create a checkout session.
+    console.log('🚀 handleCheckout called');
+
+    // 1) Request a session
     const res = await fetch('/api/create-checkout-session', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      // Optionally, send additional data (e.g., cart_id) in the body.
-      body: JSON.stringify({})
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cartId: localStorage.getItem('medusa_cart_id')
+      })
     });
+    console.log('📡 session creation status:', res.status);
+
+    const text = await res.text();
+    console.log('📖 session creation response body:', text);
 
     if (!res.ok) {
-      console.error('Checkout session creation failed');
+      console.error('❌ create-checkout-session failed');
       return;
     }
 
-    const { sessionId } = await res.json();
+    const { sessionId } = JSON.parse(text);
+    console.log('🔑 received sessionId:', sessionId);
 
-    // Use Stripe.js to redirect to the Checkout page.
+    // 2) Redirect via Stripe.js
     const stripe = await stripePromise;
-    if (stripe && sessionId) {
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) {
-        console.error('Stripe checkout error:', error);
-      }
+    console.log('✨ stripe object:', stripe);
+
+    const { error } = await stripe!.redirectToCheckout({ sessionId });
+    if (error) {
+      console.error('⚠️ redirectToCheckout error:', error);
+    } else {
+      console.log('✔️ redirectToCheckout succeeded');
     }
   }
 </script>

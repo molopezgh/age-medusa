@@ -1,62 +1,31 @@
-<!-- src/routes/+page.svelte -->
 <script lang="ts">
-  export let data: {
-    products: { id: string, title: string, description: string }[];
-  };
-
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    const res = await fetch('/store/products', {
+      headers: {
+        'x-publishable-api-key': import.meta.env.VITE_MEDUSA_PUBLISHABLE_KEY,
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('Client status:', res.status);
+    console.log('Client JSON:', await res.json());
+  });
+  export let data: { products: any[] };
   const { products } = data;
 </script>
 
 <h1>Our Courses</h1>
 
-{#if products && products.length > 0}
+{#if products.length}
   <ul>
-    {#each products as product (product.id)}
-      <li class="product-item">
-        <div class="product-info">
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-        </div>
-        <!-- Separate 'Buy Now' button wrapping the link to the product details page -->
-        <a href={`/products/${product.id}`} class="buy-button">
-          Buy Now
-        </a>
-      </li>
-    {/each}
+    {#each products as p (p.id)}
+  <li>
+    <a href={`/products/${p.id}`}>
+      <strong>{p.title}</strong>
+    </a>
+  </li>
+{/each}
   </ul>
 {:else}
-  <p>No products found.</p>
+  <p>Loading or no products found.</p>
 {/if}
-
-<style>
-  /* Style for the list items */
-  .product-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-
-  /* Styling for the product info section */
-  .product-info {
-    flex-grow: 1;
-  }
-
-  /* Styling for the Buy Now button */
-  .buy-button {
-    padding: 0.5rem 1rem;
-    background-color: #0070f3;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-    margin-left: 1rem;
-  }
-
-  .buy-button:hover {
-    background-color: #005bb5;
-  }
-</style>

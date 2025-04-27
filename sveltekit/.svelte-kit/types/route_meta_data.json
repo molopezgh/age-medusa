@@ -2,13 +2,19 @@
 	"/": [
 		"src/routes/+page.ts"
 	],
+	"/api/codegen": [
+		"src/routes/api/codegen/+server.ts"
+	],
 	"/api/create-checkout-session": [
 		"src/routes/api/create-checkout-session/+server.ts"
 	],
+	"/cancel": [],
+	"/cart": [],
 	"/checkout": [
 		"src/routes/checkout/+page.ts"
 	],
 	"/products/[id]": [
 		"src/routes/products/[id]/+page.ts"
-	]
+	],
+	"/success": []
 }

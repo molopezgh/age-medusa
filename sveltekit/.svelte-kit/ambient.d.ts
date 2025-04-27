@@ -26,9 +26,11 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const STRIPE_SECRET_KEY: string;
 	export const VITE_MEDUSA_BACKEND_URL: string;
 	export const VITE_STRIPE_PUBLISHABLE_KEY: string;
 	export const VITE_MEDUSA_PUBLISHABLE_KEY: string;
+	export const OPENAI_API_KEY: string;
 	export const ACLOCAL_PATH: string;
 	export const ALLUSERSPROFILE: string;
 	export const ANDROID_HOME: string;
@@ -144,6 +146,7 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const _MSYS2_BASH: string;
 	export const _MSYS2_PREFIX: string;
+	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -175,9 +178,11 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		STRIPE_SECRET_KEY: string;
 		VITE_MEDUSA_BACKEND_URL: string;
 		VITE_STRIPE_PUBLISHABLE_KEY: string;
 		VITE_MEDUSA_PUBLISHABLE_KEY: string;
+		OPENAI_API_KEY: string;
 		ACLOCAL_PATH: string;
 		ALLUSERSPROFILE: string;
 		ANDROID_HOME: string;
@@ -293,6 +298,7 @@ declare module '$env/dynamic/private' {
 		_: string;
 		_MSYS2_BASH: string;
 		_MSYS2_PREFIX: string;
+		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
