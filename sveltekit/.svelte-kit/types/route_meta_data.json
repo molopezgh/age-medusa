@@ -19,5 +19,6 @@
 	"/products/[id]": [
 		"src/routes/products/[id]/+page.ts"
 	],
-	"/success": []
+	"/success": [],
+	"/upload": []
 }
