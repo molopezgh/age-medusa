@@ -30,7 +30,6 @@ declare module '$env/static/private' {
 	export const VITE_MEDUSA_BACKEND_URL: string;
 	export const VITE_STRIPE_PUBLISHABLE_KEY: string;
 	export const VITE_MEDUSA_PUBLISHABLE_KEY: string;
-	export const OPENAI_API_KEY: string;
 	export const ACLOCAL_PATH: string;
 	export const ALLUSERSPROFILE: string;
 	export const ANDROID_HOME: string;
@@ -98,6 +97,7 @@ declare module '$env/static/private' {
 	export const OLDPWD: string;
 	export const OneDrive: string;
 	export const OneDriveConsumer: string;
+	export const OPENAI_API_KEY: string;
 	export const ORIGINAL_PATH: string;
 	export const ORIGINAL_TEMP: string;
 	export const ORIGINAL_TMP: string;
@@ -181,7 +181,6 @@ declare module '$env/dynamic/private' {
 		VITE_MEDUSA_BACKEND_URL: string;
 		VITE_STRIPE_PUBLISHABLE_KEY: string;
 		VITE_MEDUSA_PUBLISHABLE_KEY: string;
-		OPENAI_API_KEY: string;
 		ACLOCAL_PATH: string;
 		ALLUSERSPROFILE: string;
 		ANDROID_HOME: string;
@@ -249,6 +248,7 @@ declare module '$env/dynamic/private' {
 		OLDPWD: string;
 		OneDrive: string;
 		OneDriveConsumer: string;
+		OPENAI_API_KEY: string;
 		ORIGINAL_PATH: string;
 		ORIGINAL_TEMP: string;
 		ORIGINAL_TMP: string;

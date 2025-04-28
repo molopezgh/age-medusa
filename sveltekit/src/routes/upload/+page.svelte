@@ -7,9 +7,6 @@
   let description = '';
   let price = '';
 
-  const STORE_KEY = 'pk_451cd1b7c4a32bb3ea0bb58731a54f19f08319232f03fea2f9f64be76b385f33';
-  const ADMIN_KEY = 'sk_b56f15ba7e088625e836a5a4330cd5e35977f86c40e9c5465e11907d8188870';
-
   // Upload the video file
   async function uploadVideo() {
     if (!file) {
